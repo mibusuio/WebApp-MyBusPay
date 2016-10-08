@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Transacciones:</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th># Cédula</th>
+              <th># Teléfono</th>
+              <th>Monto</th>
+              <th>Tipo</th>
+              <th>Mensaje</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-class="{ 'success': thing.type == 0,
+                          'danger': thing.type == 1}"
+                ng-repeat="thing in vm.awesomeThings">
+            <td>{{thing.identityCard}}</td>
+            <td>{{thing.phoneNumber}}</td>
+            <td>$&nbsp;{{vm.getAmount(thing.amount)}}</td>
+            <td>{{vm.getType(thing.type)}}</td>
+            <td>{{thing.message}}</td>
+            <td>{{thing.created_at}}</td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

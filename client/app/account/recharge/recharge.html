@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>Recargar</h1>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-12">
+      <form class="form" name="form" ng-submit="vm.loadMoney(form)" novalidate>
+
+        <div class="form-group">
+          <label>Número de monedero: &nbsp;</label><span name="phoneNumber">{{vm.recharge.phoneNumber}}</span>
+        </div>
+
+        <div class="form-group">
+          <label>Monto a cargar</label>
+
+          <input type="text" name="amount" class="form-control" ng-model="vm.recharge.amount"
+                 required=""/>
+          <p class="help-block" ng-show="form.amount.$error.required && vm.submitted">
+            El monto a cargar es requerido.
+          </p>
+
+        </div>
+
+        <div class="has-success">
+          <p class="help-block"> {{ vm.successMessage }} </p>
+        </div>
+        <div class="has-error">
+          <p class="help-block"> {{ vm.errorMessage }} </p>
+        </div>
+
+        <div class="form-group text-center">
+          <button class="btn btn-lg btn-primary" type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

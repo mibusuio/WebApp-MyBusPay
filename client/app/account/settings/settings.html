@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>Cambiar contraseña</h1>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-12">
+      <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+
+        <div class="form-group">
+          <label>Contraseña actual</label>
+
+          <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ vm.errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Nueva contraseña</label>
+
+          <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
+                 ng-minlength="3"
+                 required/>
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
+            La contraseña debe tener mínimo 3 caracteres.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Confirma nueva contraseña</label>
+
+          <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
+                 match="vm.user.newPassword"
+                 ng-minlength="3"
+                 required=""/>
+          <p class="help-block"
+             ng-show="form.confirmPassword.$error.match && vm.submitted">
+            Las contraseñas no coinciden.
+          </p>
+
+        </div>
+
+        <p class="help-block"> {{ vm.message }} </p>
+
+        <div class="form-group text-center">
+          <button class="btn btn-lg btn-primary text-center" type="submit">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
